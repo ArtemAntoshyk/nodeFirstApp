@@ -1,10 +1,6 @@
 
-const john= 'John Smith';
-const tom = "Tom";
-
-const sayHi = (name) => {
-    console.log(`Hello ${name}`)
-}
-
-sayHi(john)
-sayHi(tom)
+const names = require('./names');
+const sayHi = require('./utils');
+console.log(names);
+sayHi(names.john)
+sayHi(names.tom)
