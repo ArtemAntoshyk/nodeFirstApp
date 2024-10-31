@@ -1,11 +1,14 @@
-//
-// const names = require('./names');
-// const sayHi = require('./utils');
-// const data = require('./alternative-flavor')
+const os = require('os');
 
-require('./mind-grenade')
 
-// console.log(names);
-// sayHi(names.john)
-// sayHi(names.tom)
-// console.log(data)
+const user = os.userInfo()
+console.log(user);
+console.log(`The System uptime is ${os.uptime()} seconds`);
+
+const currentOS = {
+    name:os.type(),
+    release:os.release(),
+    totalMem: os.totalmem(),
+    freeMem: os.freemem(),
+}
+console.log(currentOS);
