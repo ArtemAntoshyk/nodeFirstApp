@@ -1,11 +1,21 @@
-console.log("first");
-setTimeout(() => {
-    console.log("second");
-}, 1000)
+const http = require('http')
 
-console.log("third")
+const server = http.createServer((req, res) => {
+    if(req.url === '/'){
+        res.end('<h1>Home page!</h1>')
+    }
+    if(req.url === '/about'){
+        for (let i = 0; i<1000;i++){
+            for (let j = 0; j<1000; j++) {
+                console.log(`${i} ${j}`)
+            }
+        }
+        res.end('<h1>About Page!</h1>')
+    }
 
-setInterval(()=>{
-    console.log("Hello world")
-}, 2000)
-console.log("I will run before 'Hello world'")
+
+})
+
+server.listen(5000, () => {
+    console.log('Server listening on port 5000...')
+})
