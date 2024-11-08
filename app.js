@@ -1,19 +1,22 @@
-const {readFile} = require('fs');
+const {readFile, writeFile} = require('fs').promises
+// const util = require('util');
+// const fs = require("node:fs");
+// const  readFilePromise = util.promisify(fs.readFile);
+// const  writeFilePromise = util.promisify(fs.writeFile);
 
-
-const getText = (path) => {
-    return new Promise((resolve, reject) => {
-
-
-        readFile(path, 'utf8', (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(data)
-            }
-        })
-    })
-}
+// const getText = (path) => {
+//     return new Promise((resolve, reject) => {
+//
+//
+//         readFile(path, 'utf8', (err, data) => {
+//             if (err) {
+//                 reject(err);
+//             } else {
+//                 resolve(data)
+//             }
+//         })
+//     })
+// }
 //
 // getText('.content/first.txt')
 //     .then(result => {console.log(result)})
@@ -21,8 +24,9 @@ const getText = (path) => {
 
 const start = async () => {
     try {
-        const text = await getText('./content/first.txt');
-        const text1 = await getText('./content/second.txt');
+        const text = await readFile('./content/first.txt', 'utf8');
+        const text1 = await readFile('./content/second.txt', 'utf8');
+        await writeFile('./content/third.txt', `${text} ${text1}`,{flag:"a"});
         console.log(text, text1)
 
     } catch (err) {
